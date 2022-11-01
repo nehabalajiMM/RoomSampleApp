@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">RoomSampleApp</string>
-    <string name="name">Name:</string>
-    <string name="email">Email:</string>
-    <string name="address">Address:</string>
+    <string name="name">Name: %1$s</string>
+    <string name="email">Email: %1$s</string>
+    <string name="address">Address: %1$s, %2$s, %3$s, %4$s</string>
     <string name="add_new_contact">add_new_contact</string>
+
 </resources>

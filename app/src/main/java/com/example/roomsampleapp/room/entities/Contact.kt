@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Contact(
-    @PrimaryKey(autoGenerate = true)
-    private val contactId: Int,
-    private val contactName: String,
-    private val contactEmail: String,
+    val contactName: String,
+    val contactEmail: String,
     @Embedded
-    private val contactAddress: ContactAddress
+    val contactAddress: ContactAddress,
+    @PrimaryKey(autoGenerate = true)
+    val contactId: Long = 0L
 )

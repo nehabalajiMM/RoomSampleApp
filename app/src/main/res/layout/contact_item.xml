@@ -1,81 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="@dimen/dimen_16dp"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="contact"
+            type="com.example.roomsampleapp.room.entities.Contact" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/background_light">
+        app:cardCornerRadius="@dimen/dimen_16dp"
+        android:layout_margin="@dimen/dimen_8dp"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_contact_name"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/name"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/gl_right"
-            app:layout_constraintStart_toStartOf="@+id/gl_left"
-            app:layout_constraintTop_toTopOf="@+id/gl_top" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@color/cream"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_contact_email"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/email"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/gl_right"
-            app:layout_constraintStart_toStartOf="@+id/gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/tv_contact_name" />
+            <TextView
+                android:id="@+id/tv_contact_name"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{@string/name(contact.contactName)}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_contact_email"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/gl_left"
+                app:layout_constraintTop_toBottomOf="@id/gl_top"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-            android:id="@+id/tv_contact_name2"
-            android:layout_width="@dimen/dimen_0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/address"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
-            app:layout_constraintEnd_toStartOf="@+id/gl_right"
-            app:layout_constraintStart_toStartOf="@+id/gl_left"
-            app:layout_constraintTop_toBottomOf="@+id/tv_contact_email" />
+            <TextView
+                android:id="@+id/tv_contact_email"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{@string/email(contact.contactEmail)}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_contact_name2"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/gl_left"
+                app:layout_constraintTop_toBottomOf="@+id/tv_contact_name" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/dimen_8dp" />
+            <TextView
+                android:id="@+id/tv_contact_name2"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{@string/address(contact.contactAddress.streetAddress, contact.contactAddress.city, contact.contactAddress.state, contact.contactAddress.country)}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/gl_bottom"
+                app:layout_constraintEnd_toStartOf="@+id/gl_right"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/gl_left"
+                app:layout_constraintTop_toBottomOf="@+id/tv_contact_email" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="@dimen/dimen_8dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dimen_8dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_end="@dimen/dimen_8dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/dimen_8dp" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/dimen_8dp" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="@dimen/dimen_8dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dimen_8dp" />
 
-</androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -14,13 +14,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SampleModule {
+class ContactsModule {
 
     @Singleton
     @Provides
     fun providesContactDatabase(
         @ApplicationContext context: Context
-    ) = Room.databaseBuilder(context, ContactsDatabase::class.java, "Contacts Database").build()
+    ) = Room.databaseBuilder(context, ContactsDatabase::class.java, "Contacts Database")
+        .build()
 
     @Singleton
     @Provides
