@@ -16,8 +16,4 @@ class ContactsRepository @Inject constructor(
     fun insertContact(contact: Contact) {
         contactsDao.insertContact(contact)
     }
-
-    fun deleteContact(contact: Contact) {
-        contactsDao.deleteContact(contact)
-    }
 }

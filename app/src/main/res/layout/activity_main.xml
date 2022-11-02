@@ -37,5 +37,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/add_new_contact" />
 
+        <TextView
+            android:id="@+id/tv_add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a new contact"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rv_contacts_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_contacts_list" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
