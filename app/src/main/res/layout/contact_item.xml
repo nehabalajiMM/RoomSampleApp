@@ -99,7 +99,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                loadImageFromBitmap="@{contact.profilePhoto}"
+                loadImageFromBitmap="@{contact.contactProfilePhoto}"
                 app:layout_constraintStart_toEndOf="@id/gl_left"
                 app:layout_constraintBottom_toTopOf="@id/gl_bottom"
                 app:layout_constraintEnd_toStartOf="@+id/tv_contact_name"
