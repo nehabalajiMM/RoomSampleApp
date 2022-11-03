@@ -28,6 +28,7 @@ class AddContactActivity : AppCompatActivity() {
 
         binding.buttonSave.setOnClickListener {
             lifecycleScope.launch {
+                it.isEnabled = false
                 val contact = Contact(binding.tfContactName.editText?.text.toString(), binding.tfContactEmail.editText?.text.toString(), ContactAddress(binding.tfContactStreetAddress.editText?.text.toString(), binding.tfCity.editText?.text.toString(), binding.tfState.editText?.text.toString(), binding.tfCountry.editText?.text.toString()), getBitmap())
                 addContactViewModel.insertContact(contact)
                 finish()

@@ -21,6 +21,7 @@ class ContactsModule {
     fun providesContactDatabase(
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(context, ContactsDatabase::class.java, "Contacts Database")
+        .addMigrations(ContactsDatabase.migration3To4)
         .build()
 
     @Singleton
