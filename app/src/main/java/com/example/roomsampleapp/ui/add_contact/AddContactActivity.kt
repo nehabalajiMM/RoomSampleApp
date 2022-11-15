@@ -3,25 +3,28 @@ package com.example.roomsampleapp.ui.add_contact
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
+import com.example.roomsampleapp.RoomSampleApplication
 import com.example.roomsampleapp.databinding.ActivityAddContactBinding
 import com.example.roomsampleapp.room.entities.Contact
 import com.example.roomsampleapp.room.entities.ContactAddress
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class AddContactActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddContactBinding
-    private val addContactViewModel: AddContactViewModel by viewModels()
+
+    @Inject
+    lateinit var addContactViewModel: AddContactViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as RoomSampleApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityAddContactBinding.inflate(layoutInflater)
         setContentView(binding.root)

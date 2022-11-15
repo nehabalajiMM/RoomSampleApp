@@ -3,20 +3,23 @@ package com.example.roomsampleapp.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.roomsampleapp.RoomSampleApplication
 import com.example.roomsampleapp.adapter.ContactsListAdapter
 import com.example.roomsampleapp.databinding.ActivityMainBinding
 import com.example.roomsampleapp.ui.add_contact.AddContactActivity
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as RoomSampleApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -25,9 +28,9 @@ class MainActivity : AppCompatActivity() {
         binding.rvContactsList.adapter = contactsListAdapter
 
         mainViewModel.contacts.observe(this@MainActivity) {
+            contactsListAdapter.differ.submitList(it)
             if (it.isNotEmpty()) {
                 binding.tvAddContact.visibility = View.GONE
-                contactsListAdapter.differ.submitList(it)
             } else {
                 binding.tvAddContact.visibility = View.VISIBLE
             }
